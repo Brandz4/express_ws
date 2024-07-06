@@ -1,0 +1,14 @@
+Apuntes taller node.js: 
+- Inicializar proyecto node.js: npm init
+- Instalar librería express en carpeta (el --save hace que se instale solo en la carpeta): npm install express --save
+- Para ejecutar el archivo main del proyecto: node index.js
+- Para levantar un servidor se utiliza el .listen a la instancia de la clase express, con dos parámetros, el puerto y la función a ejecutar cuando el servidor esté funcionando. 
+
+El package.json informa la estructura y orden del proyecto, se almacenan todos los datos referentes al proyecto así como las librerías que necesita para funcionar. En el package-lock contiene la información de las dependencias necesarias de las librerías instaladas indicadas en el package-json. Informa la estructura y orden del proyecto. Node.js es un entorno de ejecución para JavaScript que sirve para interpretar y ejecutar el código JS localmente. 
+
+El node_modules contiene todos los archivos e información para que las dependencias funcionen corractemente, pero al trabajar en equipo debido a la gran cantidad de archivos que puede tener no es recomendable subir el proyecto a github debido al tamaño, por ende, se tiene que colocar en el .gitignore y al clonar el repositorio se utiliza el comando: 
+npm install
+Ese comando va a leer el package.json para instalar el node_modules con las dependecias necesarias indicadas para que el proyecto funcione bien y no tener que estar instalando dependencia por dependecia ni estar subiendo el node_modules constantemene. 
+
+
+

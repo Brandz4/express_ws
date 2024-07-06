@@ -1,0 +1,20 @@
+{
+  "name": "express-ws",
+  "version": "1.0.0",
+  "description": "learning express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "express",
+    "node.js"
+  ],
+  "author": "Brandon O",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
