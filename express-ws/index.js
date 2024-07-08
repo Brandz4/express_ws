@@ -1,6 +1,9 @@
 //Para importar una dependencia. 
 const express = require('express');
 const app = express(); 
+//Con el ./ se indica que el archivo está en la misma carpeta. 
+//Con las llaves extrae tral cual el elemento que se esta importando. 
+const {pokemon} = require('./pokedex.json');
 
 /*
 Verbos HTTP: 
@@ -16,9 +19,23 @@ req: es la petición que hace el cliente, el navegador normalmente.
 res: objeto que permite contestar la petición realizada. 
 next
 */
-app.get("/test", (req, res, next) => {
+app.get("/", (req, res, next) => {
+    //const pokemon = pokedex.pokemon;
     res.status(200);
-    res.send("welcome to the server");
+    res.send("Welcome to Pokedex");
+});
+
+app.get("/pokedex", (req, res, next) => {
+    //const pokemon = pokedex.pokemon;
+    res.status(200);
+    res.send(pokemon);
+});
+
+app.get("/pokedex/:id", (req, res, next) => {
+    //const pokemon = pokedex.pokemon;
+    let id = req.params.id; 
+    res.status(200);
+    res.send(pokemon[id-1]);
 });
 
 //Los dos puntos sirve para indicar que en dicha ruta el valor que tenga ahí se va a almacenar en una variable con el nombre escrito, name en este caso.
@@ -31,6 +48,6 @@ app.get("/:name", (req, res, next) =>{
 });
 
 //Para levantar un servidor se utiliza el .listen, con dos parámetros, el puerto y la función a ejecutar cuando el servidor esté funcionando. 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Server running in port 3000');
 });
