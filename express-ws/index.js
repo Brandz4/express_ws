@@ -18,7 +18,16 @@ next
 */
 app.get("/test", (req, res, next) => {
     res.status(200);
-    res.send("bienvenido");
+    res.send("welcome to the server");
+});
+
+//Los dos puntos sirve para indicar que en dicha ruta el valor que tenga ahí se va a almacenar en una variable con el nombre escrito, name en este caso.
+//Para obtener información de la url: req.params.name
+app.get("/:name", (req, res, next) =>{
+    let name = req.params.name; 
+    console.log(name); 
+    res.status(200);
+    res.send("Welcome "+name);
 });
 
 //Para levantar un servidor se utiliza el .listen, con dos parámetros, el puerto y la función a ejecutar cuando el servidor esté funcionando. 

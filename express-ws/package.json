@@ -4,7 +4,12 @@
   "description": "learning express",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Brandz4/express_ws.git"
   },
   "keywords": [
     "api",
@@ -14,7 +19,12 @@
   ],
   "author": "Brandon O",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brandz4/express_ws/issues"
+  },
+  "homepage": "https://github.com/Brandz4/express_ws#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
   }
 }
