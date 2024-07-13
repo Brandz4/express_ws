@@ -25,17 +25,21 @@ app.get("/", (req, res, next) => {
     res.send("Welcome to Pokedex");
 });
 
-app.get("/pokedex", (req, res, next) => {
+//Se implementa regexp para que la ruta solo acepte numeros en dicha sección. 
+app.get("/pokemon/:id([0-9]{1,3})", (req, res, next) => {
+    //const pokemon = pokedex.pokemon;
+    let id = req.params.id - 1; 
+    if(id >= 0 && id <= 150){
+        res.status(200).send(pokemon[req.params.id-1]);
+    }else{
+        res.status(200).send("Pokemon not found");
+    }
+});
+
+app.get("/pokemon/all", (req, res, next) => {
     //const pokemon = pokedex.pokemon;
     res.status(200);
     res.send(pokemon);
-});
-
-app.get("/pokedex/:id", (req, res, next) => {
-    //const pokemon = pokedex.pokemon;
-    let id = req.params.id; 
-    res.status(200);
-    res.send(pokemon[id-1]);
 });
 
 //Los dos puntos sirve para indicar que en dicha ruta el valor que tenga ahí se va a almacenar en una variable con el nombre escrito, name en este caso.
@@ -44,7 +48,18 @@ app.get("/:name", (req, res, next) =>{
     let name = req.params.name; 
     console.log(name); 
     res.status(200);
-    res.send("Welcome "+name);
+    res.send("Welcome "+ name);
+});
+
+app.get("/pokemon/:name", (req, res, next) => {
+    res.status(200);
+    const name = req.params.name;
+        pokemon.forEach(i => {
+            if(i.name == name){
+                res.status(200).send(i);
+            }
+        });
+        res.status(404).send("Pokemon not found");
 });
 
 //Para levantar un servidor se utiliza el .listen, con dos parámetros, el puerto y la función a ejecutar cuando el servidor esté funcionando. 
