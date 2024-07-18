@@ -1,5 +1,4 @@
 //Para importar una dependencia. 
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const express = require('express');
 const app = express(); 
@@ -8,11 +7,11 @@ const pokemon = require('./routes/pokemon');
 //Dependencia de desarrollo, que imprime en consola el estado de las interacciones con el servidor:
 app.use(morgan('dev'));
 //Para hacer que a alguna función se le aplique a todas las peticiones que entren al servidor, en este caso hacerlas json. 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res, next) => {
-    return res.status(200).send("Welcome to Pokedex");
+    return res.status(200).json({code: 1, message: "Welcome to Pokedex"});
 });
 
 //para idicar que todas las rutas que comiencen así van a ser atendidas en el script de pokemon.js
@@ -22,7 +21,12 @@ app.use("/pokemon", pokemon);
 //Para obtener información de la url: req.params.name
 app.get("/:name", (req, res, next) =>{
     let name = req.params.name; 
-    return res.status(200).send("Welcome "+ name);
+    return res.status(200).json({ code: 1, message: "Welcome "+ name});
+});
+
+//Mensaje de error génerico para todas las rutas con retorno 404. 
+app.use((req, res, next) => {
+    return res.status(404).json({ code: 404, message: "URL not found" });
 });
 
 //Para levantar un servidor se utiliza el .listen, con dos parámetros, el puerto y la función a ejecutar cuando el servidor esté funcionando. 
