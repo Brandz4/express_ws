@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res, next) => {
-    return res.status(200).json({code: 1, message: "Welcome to Pokedex"});
+    return res.status(200).json({code: 200, message: "Welcome to Pokedex"});
 });
 
 //para idicar que todas las rutas que comiencen así van a ser atendidas en el script de pokemon.js
@@ -21,7 +21,7 @@ app.use("/pokemon", pokemon);
 //Para obtener información de la url: req.params.name
 app.get("/:name", (req, res, next) =>{
     let name = req.params.name; 
-    return res.status(200).json({ code: 1, message: "Welcome "+ name});
+    return res.status(200).json({ code: 200, message: "Welcome "+ name});
 });
 
 //Mensaje de error génerico para todas las rutas con retorno 404. 
