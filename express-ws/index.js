@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const express = require('express');
 const app = express(); 
 const pokemon = require('./routes/pokemon');
+const user = require('./routes/user');
 
 //Dependencia de desarrollo, que imprime en consola el estado de las interacciones con el servidor:
 app.use(morgan('dev'));
@@ -17,6 +18,7 @@ app.get("/", (req, res, next) => {
 //para idicar que todas las rutas que comiencen así van a ser atendidas en el script de pokemon.js
 app.use("/pokemon", pokemon);
 
+app.use("/user", user);
 //Los dos puntos sirve para indicar que en dicha ruta el valor que tenga ahí se va a almacenar en una variable con el nombre escrito, name en este caso.
 //Para obtener información de la url: req.params.name
 app.get("/:name", (req, res, next) =>{
