@@ -11,7 +11,9 @@ const user = require('./routes/user');
 const auth = require('./middleware/auth');
 const notFound = require('./middleware/notFound'); 
 const index = require('./middleware/index');
+const cors = require('./middleware/cors');
 
+app.use(cors); 
 //Dependencia de desarrollo, que imprime en consola el estado de las interacciones con el servidor:
 app.use(morgan('dev'));
 //Para hacer que a alguna función se le aplique a todas las peticiones que entren al servidor, en este caso hacerlas json. 

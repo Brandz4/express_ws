@@ -4,7 +4,7 @@ const user = express.Router();
 
 const db = require('../config/db');
 
-user.post("/sign in", async (req, res, next) => {
+user.post("/signin", async (req, res, next) => {
     const {user_name, user_mail, user_password} = req.body; 
 
     if(user_name && user_mail && user_password){
@@ -33,7 +33,7 @@ user.post("/login", async (req, res, next) => {
             }, "debugkey");
             return res.status(200).json({ code: 200, message: token});
         }else {
-            return res.status(401).json({ code: 401, message: "Incorrect mail and/or password"});
+            return res.status(200).json({ code: 401, message: "Incorrect mail and/or password"});
         }
     }
     return res.status(500).json({ code: 500, message: "Incomplete fields"});
