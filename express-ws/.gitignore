@@ -133,5 +133,5 @@ ehthumbs.db
 # Linux
 *~
 
-# Ignore UI
-Pokedex/
+# Ignore UI 
+#Pokedex/ //Lo quito por cuestiones de avance y tener todo en el repositorio
